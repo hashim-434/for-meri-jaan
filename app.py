@@ -10,17 +10,39 @@ st.set_page_config(page_title="A Gift For Rida", page_icon="💝", layout="cente
 # Custom Styling for the romantic theme
 st.markdown("""
     <style>
-    .main { background-color: #FFF5F5; }
+    /* Light pink background for the entire page */
+    .stApp {
+        background-color: #FFF0F2 !important;
+    }
+    
     h1, h2, h3 { color: #D63447 !important; font-family: 'Courier New', Courier, monospace; }
+    
     .stButton>button {
         background-color: #FF8E9E; color: white; border-radius: 20px;
         padding: 10px 25px; border: none; font-size: 18px;
     }
     .stButton>button:hover { background-color: #D63447; color: white; }
+    
+    /* Letter box with a very soft pink background and dark pink text */
     .letter-box {
-        background-color: #FFFFFF; padding: 30px; border-radius: 15px;
-        box-shadow: 0px 4px 15px rgba(0,0,0,0.05); border: 1px dashed #FF8E9E;
-        font-family: 'Georgia', serif; line-height: 1.6; color: #4A4A4A;
+        background-color: #FFE3E7; 
+        padding: 30px; 
+        border-radius: 15px;
+        box-shadow: 0px 4px 15px rgba(214, 52, 71, 0.1); 
+        border: 2px dashed #FF8E9E;
+        font-family: 'Georgia', serif; 
+        line-height: 1.6; 
+        color: #9E1B32 !important; /* Beautiful Dark Pink/Crimson Text */
+        font-size: 18px;
+    }
+    
+    /* Background falling flower pattern behind the letter */
+    .flower-bg {
+        font-size: 24px;
+        opacity: 0.3;
+        text-align: center;
+        user-select: none;
+        margin-bottom: -20px;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -71,7 +93,19 @@ elif st.session_state.page == 'flowers':
 elif st.session_state.page == 'letter':
     st.markdown("<h2 style='text-align: center;'>Happy 6-Month Anniversary, My Love! ❤️</h2>", unsafe_allow_html=True)
     
-    letter_text = """
+    # Sweet instrumental background music
+    st.markdown("""
+        <iframe src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" allow="autoplay" id="audio" style="display:none;"></iframe>
+        <audio autoplay loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mp3">
+        </audio>
+    """, unsafe_allow_html=True)
+
+    # Cute Lily and Rose background elements above the letter
+    st.markdown('<div class="flower-bg">🌸 🌹 🌷 🌸 🌹 🌷 🌸 🌹 🌷</div>', unsafe_allow_html=True)
+
+    # Cleaned up layout with Dark Pink Text and Light Pink Card background
+    st.markdown(f"""
     <div class="letter-box">
         <p><strong>Dearest Rida, My Future Wife,</strong></p>
         
@@ -85,6 +119,11 @@ elif st.session_state.page == 'letter':
         makes everything feel extraordinary. You make me feel seen, safe, and deeply loved in ways I never 
         imagined possible.</p>
         
+        <p><strong>I want to take a moment to tell you how incredibly proud I am of you. You are one of the 
+        strongest, most resilient people I have ever known. Watching how beautifully you handle everything 
+        inspires me daily. Facing a long-distance relationship isn't always easy, but your strength makes us 
+        unbreakable, and it makes me honor you even more as my future wife.</strong></p>
+        
         <p>I cherish everything about us—the way we laugh together over the simplest things, the comfort 
         of your voice, and the beautiful future we are building step by step. You are not just my partner; 
         you are my home.</p>
@@ -97,17 +136,19 @@ elif st.session_state.page == 'letter':
         
         <p style='text-align: right;'><strong>Yours truly, forever and always,</strong><br>❤️</p>
     </div>
-    """
-    st.markdown(letter_text, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+    
+    # Cute Lily and Rose background elements below the letter
+    st.markdown('<div class="flower-bg">🌷 🌹 🌸 🌷 🌹 🌸 🌷 🌹 🌸</div>', unsafe_allow_html=True)
     
     st.write("---")
     st.markdown("<h3 style='text-align: center;'>Our Special Video Memory 🎥</h3>", unsafe_allow_html=True)
     
-    # Integrates the provided memory file into the interface
+    # Integrates the video file into the interface
     try:
-        video_file = open('WhatsApp Video 2026-06-16 at 12.50.00 AM.mp4', 'rb')
-        video_bytes = video_file.read()
-        st.video(video_bytes)
+        with open('WhatsApp Video 2026-06-16 at 12.50.00 AM.mp4', 'rb') as video_file:
+            video_bytes = video_file.read()
+            st.video(video_bytes)
     except FileNotFoundError:
         st.warning("To display your video here, make sure to upload 'WhatsApp Video 2026-06-16 at 12.50.00 AM.mp4' to your GitHub project folder!")
 

@@ -103,15 +103,7 @@ elif st.session_state.page == 'flowers':
 elif st.session_state.page == 'letter':
     st.markdown("<h2>Happy 6-Month Anniversary, My Love! ❤️</h2>", unsafe_allow_html=True)
     
-    # Plays Arctic Monkeys - I Wanna Be Yours smoothly in the background
-    st.markdown("""
-        <iframe src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" allow="autoplay" id="audio" style="display:none;"></iframe>
-        <audio autoplay loop>
-            <source src="https://files.freemusicarchive.org/storage-tokyo/music/ccCommunity/Chad_Crouch/Motion_Instrumentals/Chad_Crouch_-_Algorithms.mp3" type="audio/mp3">
-        </audio>
-    """, unsafe_allow_html=True)
-    
-    # Hidden audio backup node to force autoplay on modern browsers
+    # Plays ONLY Arctic Monkeys - I Wanna Be Yours smoothly in the background
     st.write(
         f'<iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?autoplay=1&loop=1&playlist=nyuo9-OjNNg" width="0" height="0" frameborder="0" allow="autoplay"></iframe>',
         unsafe_allow_html=True

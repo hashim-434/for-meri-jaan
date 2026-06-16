@@ -32,7 +32,7 @@ st.markdown("""
         border: 2px dashed #FF8E9E;
         font-family: 'Georgia', serif; 
         line-height: 1.6; 
-        color: #9E1B32 !important; /* Beautiful Dark Pink/Crimson Text */
+        color: #9E1B32 !important; /* Beautiful Dark Pink Text */
         font-size: 18px;
     }
     
@@ -42,7 +42,8 @@ st.markdown("""
         opacity: 0.3;
         text-align: center;
         user-select: none;
-        margin-bottom: -20px;
+        margin-bottom: -15px;
+        margin-top: 15px;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -93,19 +94,19 @@ elif st.session_state.page == 'flowers':
 elif st.session_state.page == 'letter':
     st.markdown("<h2 style='text-align: center;'>Happy 6-Month Anniversary, My Love! ❤️</h2>", unsafe_allow_html=True)
     
-    # Sweet instrumental background music
+    # Soft, sweet, romantic piano instrumental track
     st.markdown("""
-        <iframe src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" allow="autoplay" id="audio" style="display:none;"></iframe>
+        <iframe src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" allow="autoplay" id="audio" style="display:none;"></iframe>
         <audio autoplay loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mp3">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mp3">
         </audio>
     """, unsafe_allow_html=True)
 
     # Cute Lily and Rose background elements above the letter
     st.markdown('<div class="flower-bg">🌸 🌹 🌷 🌸 🌹 🌷 🌸 🌹 🌷</div>', unsafe_allow_html=True)
 
-    # Cleaned up layout with Dark Pink Text and Light Pink Card background
-    st.markdown(f"""
+    # Cleaned up structural HTML formatting
+    st.markdown("""
     <div class="letter-box">
         <p><strong>Dearest Rida, My Future Wife,</strong></p>
         
@@ -134,7 +135,7 @@ elif st.session_state.page == 'letter':
         
         <p>Thank you for staying, for loving me so perfectly, and for just being you.</p>
         
-        <p style='text-align: right;'><strong>Yours truly, forever and always,</strong><br>❤️</p>
+        <p style="text-align: right;"><strong>Yours truly, forever and always,</strong><br>❤️</p>
     </div>
     """, unsafe_allow_html=True)
     

@@ -8,10 +8,9 @@ import time
 st.set_page_config(page_title="A Gift For Rida", page_icon="💝", layout="centered")
 
 # --- GLOBAL BACKGROUND MUSIC ---
-# Locked at the very top so Arctic Monkeys - "I Wanna Be Yours" 
-# plays continuously across ALL pages without stopping!
-st.write(
-    f'<iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?autoplay=1&loop=1&playlist=nyuo9-OjNNg" width="0" height="0" frameborder="0" allow="autoplay"></iframe>',
+# Embedded safely without f-string interference so Arctic Monkeys plays continuously
+st.markdown(
+    '<iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?autoplay=1&loop=1&playlist=nyuo9-OjNNg" width="0" height="0" frameborder="0" allow="autoplay"></iframe>',
     unsafe_allow_html=True
 )
 
@@ -123,12 +122,71 @@ elif st.session_state.page == 'letter':
     st.markdown("<h2>Happy 6-Month Anniversary, My Love! ❤️</h2>", unsafe_allow_html=True)
     st.markdown('<div class="flower-divider">🌸 🌹 🌷 🌸 🌹 🌷 🌸 🌹 🌷</div>', unsafe_allow_html=True)
 
-    # Creating a beautiful container for the letter
+    # Letter layout block
     with st.container():
         st.markdown('<p class="romantic-text"><strong>Dearest Rida, My Future Wife,</strong></p>', unsafe_allow_html=True)
-        
         st.markdown('<p class="romantic-text">Happy 6-month Monthsary! I can’t believe how fast time has flown, yet every single moment with you feels incredibly special. Even though distance keeps us physically apart right now, sending you these virtual lilies and roses is just a small reminder of how deeply you are always rooted in my heart.</p>', unsafe_allow_html=True)
-        
         st.markdown('<p class="romantic-text">Meeting you has been the greatest blessing of my life. You\'ve brought so much genuine joy, warmth, and bright color into my world. Before you, my days were ordinary, but knowing you are in my life makes everything feel extraordinary. You make me feel seen, safe, and deeply loved in ways I never imagined possible.</p>', unsafe_allow_html=True)
+        st.markdown('<p class="romantic-text-bold">I want to take a moment to tell you how incredibly proud I am of you. You are one of the strongest, most resilient people I have ever known. Watching how beautifully you handle everything inspires me daily. Facing a long-distance relationship isn\'t always easy, but your strength makes us unbreakable, and it makes me honor you even more as my future wife.</p>', unsafe_allow_html=True)
+        st.markdown('<p class="romantic-text">I cherish everything about us—the way we laugh together over the simplest things, the comfort of your voice, and the beautiful future we are building step by step. You are not just my partner; you are my home.</p>', unsafe_allow_html=True)
+        st.markdown('<p class="romantic-text">As we celebrate hitting this beautiful 6-month milestone, I want you to know that my love for you grows stronger every single day. I am so excited for all the memories we have yet to create, the dreams we will chase, and the beautiful life we will build together once the distance is finally zero.</p>', unsafe_allow_html=True)
+        st.markdown('<p class="romantic-text">Thank you for staying, for loving me so perfectly, and for just being you.</p>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align: right; color: #9E1B32; font-family: Georgia; font-size: 19px;"><strong>Yours truly, forever and always,</strong><br>❤️</p>', unsafe_allow_html=True)
+
+    st.markdown('<div class="flower-divider">🌷 🌹 🌸 🌷 🌹 🌸 🌷 🌹 🌸</div>', unsafe_allow_html=True)
+    
+    st.write("---")
+    st.markdown("<h3>Our Special Video Memory 🎥</h3>", unsafe_allow_html=True)
+    
+    try:
+        with open('WhatsApp Video 2026-06-16 at 12.50.00 AM.mp4', 'rb') as video_file:
+            video_bytes = video_file.read()
+            st.video(video_bytes)
+    except FileNotFoundError:
+        st.warning("Video file not found on GitHub!")
+
+    st.write("---")
+    
+    # Navigation button to go to the next photo page
+    st.markdown("<div style='text-align: center; margin-top: 30px;'>", unsafe_allow_html=True)
+    if st.button("Click for One Last Surprise... ✨"):
+        st.session_state.page = 'memories'
+        st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# --- PAGE 4: THE MEMORIES SURPRISE PAGE ---
+elif st.session_state.page == 'memories':
+    st.markdown("<h2>Our Beautiful Memories 📸❤️</h2>", unsafe_allow_html=True)
+    st.markdown('<div class="flower-divider">🌹 🌷 🌹 🌷 🌹</div>', unsafe_allow_html=True)
+    
+    # 1. Displays the grass selfie
+    try:
+        st.image("grass_selfie.jpg", use_container_width=True, caption="Holding onto you forever 💕")
+    except:
+        st.error("Missing 'grass_selfie.jpg' file on GitHub!")
         
-        st.markdown('<p
+    st.write("") 
+    
+    # 2. Displays the black & white collage
+    try:
+        st.image("collage.jpg", use_container_width=True, caption="Every shared laugh is my favorite memory 🥰")
+    except:
+        st.error("Missing 'collage.jpg' file on GitHub!")
+
+    st.write("") 
+
+    # 3. Displays the match/stadium photo
+    try:
+        st.image("stadium.jpg", use_container_width=True, caption="My favorite view is always you 👩‍❤️‍👨")
+    except:
+        st.error("Missing 'stadium.jpg' file on GitHub!")
+
+    st.markdown('<div class="flower-divider">🌹 🌷 🌹 🌷 🌹</div>', unsafe_allow_html=True)
+    
+    # Final romantic wrap-up line
+    st.markdown('<p class="future-wife-text">"Can\'t wait to recreate these with you IRL."</p>', unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-size: 35px;'>💍❤️👩‍❤️‍👨</p>", unsafe_allow_html=True)
+    
+    if st.button("⬅️ Read Letter Again"):
+        st.session_state.page = 'letter'
+        st.rerun()

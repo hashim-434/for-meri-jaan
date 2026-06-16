@@ -46,6 +46,17 @@ st.markdown("""
         margin-bottom: 15px;
         font-weight: bold;
     }
+
+    /* Future Wife Highlight text */
+    .future-wife-text {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 26px;
+        color: #D63447 !important;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 25px;
+        letter-spacing: 1px;
+    }
     
     /* Floral background dividers */
     .flower-divider {
@@ -103,7 +114,7 @@ elif st.session_state.page == 'flowers':
 elif st.session_state.page == 'letter':
     st.markdown("<h2>Happy 6-Month Anniversary, My Love! ❤️</h2>", unsafe_allow_html=True)
     
-    # Plays ONLY Arctic Monkeys - I Wanna Be Yours smoothly in the background
+    # Plays Arctic Monkeys - I Wanna Be Yours smoothly in the background
     st.write(
         f'<iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?autoplay=1&loop=1&playlist=nyuo9-OjNNg" width="0" height="0" frameborder="0" allow="autoplay"></iframe>',
         unsafe_allow_html=True
@@ -111,7 +122,7 @@ elif st.session_state.page == 'letter':
 
     st.markdown('<div class="flower-divider">🌸 🌹 🌷 🌸 🌹 🌷 🌸 🌹 🌷</div>', unsafe_allow_html=True)
 
-    # Creating a beautiful container for the letter with zero string leaks
+    # Creating a beautiful container for the letter
     with st.container():
         st.markdown('<p class="romantic-text"><strong>Dearest Rida, My Future Wife,</strong></p>', unsafe_allow_html=True)
         
@@ -140,6 +151,59 @@ elif st.session_state.page == 'letter':
             video_bytes = video_file.read()
             st.video(video_bytes)
     except FileNotFoundError:
-        st.warning("To display your video here, make sure to upload 'WhatsApp Video 2026-06-16 at 12.50.00 AM.mp4' to your GitHub repository folder!")
+        st.warning("Video file not found on GitHub!")
 
-    st.markdown("<div style='text-align: center; font-size: 30px; margin-top: 30px;'>⚜️ 🌹 ⚜️ 🌷 ⚜️</div>", unsafe_allow_html=True)
+    st.write("---")
+    
+    # Navigation button to go to the next photo page
+    st.markdown("<div style='text-align: center; margin-top: 30px;'>", unsafe_allow_html=True)
+    if st.button("Click for One Last Surprise... ✨"):
+        st.session_state.page = 'memories'
+        st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# --- PAGE 4: THE MEMORIES SURPRISE PAGE ---
+elif st.session_state.page == 'memories':
+    st.markdown("<h2>Our Beautiful Memories 📸❤️</h2>", unsafe_allow_html=True)
+    st.markdown('<div class="flower-divider">🌹 🌷 🌹 🌷 🌹</div>', unsafe_allow_html=True)
+    
+    # 1. Displays the grass selfie (.jpeg compatibility)
+    try:
+        st.image("grass_selfie.jpeg", use_column_width=True, caption="Holding onto you forever 💕")
+    except:
+        try:
+            st.image("grass_selfie.jpg", use_column_width=True, caption="Holding onto you forever 💕")
+        except:
+            st.error("Missing 'grass_selfie.jpeg' file on GitHub!")
+        
+    st.write("") 
+    
+    # 2. Displays the black & white collage (.jpeg compatibility)
+    try:
+        st.image("collage.jpeg", use_column_width=True, caption="Every shared laugh is my favorite memory 🥰")
+    except:
+        try:
+            st.image("collage.jpg", use_column_width=True, caption="Every shared laugh is my favorite memory 🥰")
+        except:
+            st.error("Missing 'collage.jpeg' file on GitHub!")
+
+    st.write("") 
+
+    # 3. Displays the match/stadium photo (.jpeg compatibility)
+    try:
+        st.image("stadium.jpeg", use_column_width=True, caption="My favorite view is always you 👩‍❤️‍👨")
+    except:
+        try:
+            st.image("stadium.jpg", use_column_width=True, caption="My favorite view is always you 👩‍❤️‍👨")
+        except:
+            st.error("Missing 'stadium.jpeg' file on GitHub!")
+
+    st.markdown('<div class="flower-divider">🌹 🌷 🌹 🌷 🌹</div>', unsafe_allow_html=True)
+    
+    # Final romantic wrap-up line
+    st.markdown('<p class="future-wife-text">"Can\'t wait to recreate these with you IRL."</p>', unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; font-size: 35px;'>💍❤️👩‍❤️‍👨</p>", unsafe_allow_html=True)
+    
+    if st.button("⬅️ Read Letter Again"):
+        st.session_state.page = 'letter'
+        st.rerun()

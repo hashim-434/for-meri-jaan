@@ -8,13 +8,14 @@ import time
 st.set_page_config(page_title="A Gift For Rida", page_icon="💝", layout="centered")
 
 # --- GLOBAL BACKGROUND MUSIC ---
-# Embedded safely without f-string interference so Arctic Monkeys plays continuously
+# Uses a clean, mobile-friendly audio embed. If autoplay is blocked by the phone,
+# a neat mini-player allows her to tap "Play" once, and it loops across all pages!
 st.markdown(
-    '<iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?autoplay=1&loop=1&playlist=nyuo9-OjNNg" width="0" height="0" frameborder="0" allow="autoplay"></iframe>',
+    '<iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?autoplay=1&loop=1&playlist=nyuo9-OjNNg" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px; margin-bottom:20px;"></iframe>',
     unsafe_allow_html=True
 )
 
-# Custom CSS Styling for the romantic theme
+# Custom CSS Styling for the romantic theme (Optimized for Mobile Screens)
 st.markdown("""
     <style>
     /* Soft light pink background for the whole page */
@@ -40,7 +41,7 @@ st.markdown("""
     .romantic-text {
         font-family: 'Georgia', serif;
         font-size: 19px;
-        color: #9E1B32 !important; /* Beautiful Dark Pink/Crimson */
+        color: #9E1B32 !important;
         line-height: 1.7;
         margin-bottom: 15px;
     }
@@ -54,7 +55,18 @@ st.markdown("""
         font-weight: bold;
     }
 
-    /* Future Wife Highlight text */
+    /* SOLID HIGH-VISIBILITY MOBILE CAPTIONS */
+    .mobile-caption {
+        font-family: 'Georgia', serif;
+        font-size: 16px;
+        color: #C32139 !important; /* Bold Crimson Red - fully visible on phones */
+        font-weight: bold;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 25px;
+    }
+
+    /* Future Wife Highlight text - Deep and Vivid for Mobile */
     .future-wife-text {
         font-family: 'Courier New', Courier, monospace;
         font-size: 26px;
@@ -68,7 +80,7 @@ st.markdown("""
     /* Floral background dividers */
     .flower-divider {
         font-size: 24px;
-        opacity: 0.4;
+        opacity: 0.5;
         text-align: center;
         user-select: none;
         margin: 20px 0;
@@ -122,7 +134,6 @@ elif st.session_state.page == 'letter':
     st.markdown("<h2>Happy 6-Month Anniversary, My Love! ❤️</h2>", unsafe_allow_html=True)
     st.markdown('<div class="flower-divider">🌸 🌹 🌷 🌸 🌹 🌷 🌸 🌹 🌷</div>', unsafe_allow_html=True)
 
-    # Letter layout block
     with st.container():
         st.markdown('<p class="romantic-text"><strong>Dearest Rida, My Future Wife,</strong></p>', unsafe_allow_html=True)
         st.markdown('<p class="romantic-text">Happy 6-month Monthsary! I can’t believe how fast time has flown, yet every single moment with you feels incredibly special. Even though distance keeps us physically apart right now, sending you these virtual lilies and roses is just a small reminder of how deeply you are always rooted in my heart.</p>', unsafe_allow_html=True)
@@ -147,12 +158,9 @@ elif st.session_state.page == 'letter':
 
     st.write("---")
     
-    # Navigation button to go to the next photo page
-    st.markdown("<div style='text-align: center; margin-top: 30px;'>", unsafe_allow_html=True)
     if st.button("Click for One Last Surprise... ✨"):
         st.session_state.page = 'memories'
         st.rerun()
-    st.markdown("</div>", unsafe_allow_html=True)
 
 # --- PAGE 4: THE MEMORIES SURPRISE PAGE ---
 elif st.session_state.page == 'memories':
@@ -161,7 +169,8 @@ elif st.session_state.page == 'memories':
     
     # 1. Displays the grass selfie
     try:
-        st.image("grass_selfie.jpg", use_container_width=True, caption="Holding onto you forever 💕")
+        st.image("grass_selfie.jpg", use_container_width=True)
+        st.markdown('<p class="mobile-caption">Holding onto you forever 💕</p>', unsafe_allow_html=True)
     except:
         st.error("Missing 'grass_selfie.jpg' file on GitHub!")
         
@@ -169,7 +178,8 @@ elif st.session_state.page == 'memories':
     
     # 2. Displays the black & white collage
     try:
-        st.image("collage.jpg", use_container_width=True, caption="Every shared laugh is my favorite memory 🥰")
+        st.image("collage.jpg", use_container_width=True)
+        st.markdown('<p class="mobile-caption">Every shared laugh is my favorite memory 🥰</p>', unsafe_allow_html=True)
     except:
         st.error("Missing 'collage.jpg' file on GitHub!")
 
@@ -177,7 +187,8 @@ elif st.session_state.page == 'memories':
 
     # 3. Displays the match/stadium photo
     try:
-        st.image("stadium.jpg", use_container_width=True, caption="My favorite view is always you 👩‍❤️‍👨")
+        st.image("stadium.jpg", use_container_width=True)
+        st.markdown('<p class="mobile-caption">My favorite view is always you 👩‍❤️‍👨</p>', unsafe_allow_html=True)
     except:
         st.error("Missing 'stadium.jpg' file on GitHub!")
 
